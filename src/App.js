@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import 'react-bootstrap'
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Script/Navbar"
 import About from "./Components/Script/about"
 import Contact from "./Components/Script/contact"
