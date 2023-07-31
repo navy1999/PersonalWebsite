@@ -11,12 +11,12 @@ const Topbar= () =>{
   <div>
     <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
     <Container>
-      <NavbarBrand href='/'>Navneet Shankar's Personal Site</NavbarBrand>
+      <NavbarBrand href='/PersonalWebsite'>Navneet Shankar's Personal Site</NavbarBrand>
       <NavbarToggle aria-controls='basic-navbar-nav' />
       <NavbarCollapse id='basic-navbar-nav'>
         <Nav className='me-auto'>
-          <NavLink href='/projects'>Projects</NavLink>
-          <NavLink href='/contact'>Contact</NavLink>
+          <NavLink href="/PersonalWebsite/#/projects">Projects</NavLink>
+          <NavLink href='/PersonalWebsite/#/contact'>Contact</NavLink>
           <NavLink href='https://www.linkedin.com/in/navneets889593176/'>Linkedin</NavLink>
         </Nav>
       </NavbarCollapse>

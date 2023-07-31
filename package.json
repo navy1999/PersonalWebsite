@@ -1,7 +1,7 @@
 {
   "name": "personalsite",
   "version": "0.1.0",
-  "homepage": "https://navy1999.github.io/PersonalWebsite/#",
+  "homepage": "https://navy1999.github.io/PersonalWebsite/",
   "private": true,
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",

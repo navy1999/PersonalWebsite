@@ -9,12 +9,12 @@ import Projects from "./Components/Script/projects"
 function App() {
   return (
    <div>
-  <Router>
+  <Router basename="/">
     <Navbar/>
     <Routes>
-      <Route path="/"  element={<About/>} />
-      <Route path="/projects" element={<Projects/>} />
-      <Route path="/contact" element={<Contact/>} />
+      <Route exact path="/"  element={<About />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   </Router>
   </div> 
