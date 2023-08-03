@@ -10,6 +10,10 @@ app.use(express.json());
 app.use("/", router);
 app.listen(5000, () => console.log("Server Running"));
 
+router.get("/cron", (req,res) => {
+  res.send('Awake!')
+});
+
 const contactEmail = nodemailer.createTransport({
     service:'gmail',
     auth: {
