@@ -11,7 +11,7 @@ const projects =() =>{
                 <Card.Body>
                     <Card.Title>Kidney Cancer Prediction with CNNs</Card.Title>
                     <Card.Text>
-                    A convolutional neural network to predict the risk of Kidney Cnacer by analysing H&E stained cell images
+                    A convolutional neural network to predict the risk of Kidney Cancer by analysing H&E stained cell images
                     </Card.Text>
                     <a className='stretched-link' href="https://colab.research.google.com/drive/1UtVq0D70hfE1XmOIRnhGxge53kUkMf_4#scrollTo=Z8XfhXC4u2iR"></a>
                 </Card.Body>
