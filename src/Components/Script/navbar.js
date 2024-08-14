@@ -2,14 +2,15 @@ import React from 'react';
 import {NavDropdown,NavItem,Container,NavLink,ListGroup,ListGroupItem,Navbar,Nav, NavbarBrand} from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Styles/Navbar.css'
-import { Link } from "react-router-dom";
+import '../Styles/Navbar.css';
+import Scroll from 'react-scroll';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
+const ScrollLink = Scroll.ScrollLink
 const Topbar= () =>{
   return (
   <div>
-    <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+    <Navbar id="navbar-main" expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
     <Container>
       <NavbarBrand href='/PersonalWebsite'>Navneet Shankar's Personal Site</NavbarBrand>
       <NavbarToggle aria-controls='basic-navbar-nav' />
