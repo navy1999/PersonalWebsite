@@ -4,10 +4,7 @@ import { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { Button, Container, Nav } from 'react-bootstrap';
 import resume from 'C:/Users/navne/personalsite/src/Navneet_Resume.pdf';
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.js',
-    import.meta.url,
-  );
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 const About =() =>{
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
