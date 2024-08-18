@@ -28,7 +28,7 @@ const About =() =>{
                 </Nav>
 
             <Document file={resume} onLoadSuccess={() =>{ setNumPages(4); setPageNumber(1);}} >
-                <Page pageNumber={pageNumber} enderTextLayer={false} />
+                <Page pageNumber={pageNumber} renderTextLayer={false} />
             </Document>
             </Container>
         </div>
