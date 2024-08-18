@@ -3,7 +3,7 @@ import 'react-bootstrap'
 import { useState } from 'react';
 import { Document, Page ,pdfjs} from 'react-pdf';
 import { Button, Container, Nav } from 'react-bootstrap';
-import resume from 'C:/Users/navne/personalsite/src/pdf_sample.pdf';
+import resume from 'C:/Users/navne/personalsite/src/Navneet_Resume_NEW.pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 const About =() =>{
     const [numPages, setNumPages] = useState(null);
@@ -27,7 +27,7 @@ const About =() =>{
 				</p>
                 </Nav>
 
-            <Document file={resume} onLoadSuccess={() =>{ setNumPages(4); setPageNumber(1);}} >
+            <Document file={resume} onLoadSuccess={() =>{ setNumPages(2); setPageNumber(1);}} >
                 <Page pageNumber={pageNumber} renderTextLayer={false} />
             </Document>
             </Container>
