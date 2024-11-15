@@ -17,20 +17,24 @@ const About =() =>{
                 <p>I graduated from National Institute of Technology Karnataka with a BTech in Electronics and Communication Engineering</p>
                 <p>I am currently working on projects in Deep Genomics, Computer Vision, Machine Learning Fundamentals.</p>
             </div>
+            <h3>Resume</h3>
             </Container> 
+
             <Container>
-                <Nav>
+
+            <Nav>
                 <Button onClick={()=>{setPageNumber(pageNumber - 1 <= 1 ? 1 : pageNumber - 1)}}>Prev</Button>
                 <Button onClick={()=>{setPageNumber(pageNumber + 1 >= numPages ? numPages : pageNumber + 1)}}>Next</Button> 
                 <p>
 					Page {pageNumber} of {numPages}
 				</p>
-                </Nav>
-
+            </Nav>
             <Document file={resume} onLoadSuccess={() =>{ setNumPages(2); setPageNumber(1);}} >
                 <Page pageNumber={pageNumber} renderTextLayer={false} />
             </Document>
+
             </Container>
+
         </div>
     );
 }

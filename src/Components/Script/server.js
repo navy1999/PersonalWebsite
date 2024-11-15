@@ -18,7 +18,7 @@ const contactEmail = nodemailer.createTransport({
     service:'gmail',
     auth: {
       user: "deeplearningns99@gmail.com",
-      pass: "ottgczroiejfeawa",
+      pass: "Bool123#",
     },
   });
   
@@ -36,7 +36,7 @@ const contactEmail = nodemailer.createTransport({
     const message = req.body.message; 
     const mail = {
       from: name,
-      to: "orthopraxis45@proton.me",
+      to: "aerobottechlabs@gmail.com",
       subject: "Contact Form Submission",
       html: `<p>Name: ${name}</p>
              <p>Email: ${email}</p>
