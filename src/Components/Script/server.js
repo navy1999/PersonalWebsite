@@ -18,7 +18,7 @@ const contactEmail = nodemailer.createTransport({
     service:'gmail',
     auth: {
       user: "deeplearningns99@gmail.com",
-      pass: "ottgczroiejfeawa",
+      pass: "whiy ajox medg hiwc",
     },
   });
   
