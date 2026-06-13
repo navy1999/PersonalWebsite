@@ -319,6 +319,11 @@
     flex-grow: 1;
     margin: 0;
   }
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
   .project-link {
     display: inline-flex;
     align-items: center;
@@ -504,11 +509,16 @@
             <ul class="project-tags">
               <li>Go</li><li>Next.js</li><li>C++/Eigen</li><li>Neo4j</li><li>OpenRouter</li>
             </ul>
-            <p class="project-desc">A retrieval-augmented generation platform with a custom C++/Eigen vector search core wrapped behind a Go API, paired with Neo4j for graph-based context retrieval. The Next.js frontend routes queries through OpenRouter to compare grounded responses across multiple LLMs.</p>
-            <a class="project-link" href="https://github.com/navy1999/spectra-rag" target="_blank" rel="noopener noreferrer">
-              GitHub
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
-            </a>
+            <p class="project-desc">Built a query-routing and retrieval system that makes small, resource-constrained LLMs viable over large knowledge graphs. Routes natural language queries across GraphRAG (Neo4j), semantic search, and direct LLM generation based on query type &mdash; with a PCA&rarr;LDA router (85% LOOCV accuracy), Trie-based stream interceptor for entity spelling, and SVD redundancy penalty. Measured: entity spelling 73.5%&rarr;81.4%, groundedness 87.5%.</p>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/navy1999/spectra-rag" target="_blank" rel="noopener noreferrer">
+                GitHub
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+              </a>
+              <a class="project-link" href="https://spectra-rag.vercel.app/" target="_blank" rel="noopener noreferrer">
+                Live Demo &#8599;
+              </a>
+            </div>
           </article>
 
           <article class="project-card">
