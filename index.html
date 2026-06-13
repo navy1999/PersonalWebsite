@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark light" />
+<meta name="description" content="Navneet Shankar — Software Engineer specializing in retrieval systems, distributed data, and AI-powered backends." />
+<title>Navneet Shankar — Software Engineer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23171614'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='58' fill='%234f98a3' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --bg: #171614;
+    --surface: #1e1c1a;
+    --border: #332f2b;
+    --text: #f4f1ec;
+    --text-muted: #9c958c;
+    --accent: #4f98a3;
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html[data-theme="light"] {
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --border: #e6e1d8;
+    --text: #211f1c;
+    --text-muted: #75706a;
+    --accent: #01696f;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  section[id] { scroll-margin-top: 4.5rem; }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  @media (min-width: 1280px) {
+    .container { padding: 0 2rem; }
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .nav-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @media (min-width: 1280px) {
+    .nav-inner { padding: 1rem 2rem; }
+  }
+  .nav-brand {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.01em;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible {
+    color: var(--accent);
+  }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    margin: 0 auto;
+    background: var(--text);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text);
+    transition: border-color 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+  html[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+  html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+  @media (max-width: 767px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem;
+      transform: translateY(-8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+    .nav-links.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 0 4rem;
+  }
+  .hero .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 13vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 400;
+    margin: 0;
+  }
+  .hero-title {
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    color: var(--accent);
+    font-weight: 500;
+    margin: 0;
+  }
+  .hero-statement {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 38rem;
+    margin: 0.5rem 0 0;
+  }
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .hero-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .hero-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .hero-links svg { width: 20px; height: 20px; }
+
+  /* ===== SECTION SHARED ===== */
+  .section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .section-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0 0 2.5rem;
+    font-weight: 400;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 42rem;
+  }
+  .about-content .lead {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.8vw, 1.75rem);
+    color: var(--text);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .about-content p:not(.lead) {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ===== PROJECTS ===== */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s ease, background 0.3s ease;
+  }
+  .project-card.visible { opacity: 1; transform: translateY(0); }
+  .project-card:hover { border-color: var(--accent); }
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .project-tags li {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-muted);
+  }
+  .project-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    flex-grow: 1;
+    margin: 0;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    align-self: flex-start;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .project-link:hover { border-color: var(--accent); color: var(--accent); }
+  .project-link svg { width: 16px; height: 16px; }
+
+  /* ===== EXPERIENCE ===== */
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    transition: background 0.3s ease;
+  }
+  .timeline-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 400;
+  }
+  .timeline-company {
+    color: var(--accent);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 0.15rem;
+  }
+  .timeline-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .timeline-list {
+    margin: 0.9rem 0 0;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .timeline-list li { font-size: 0.95rem; }
+
+  /* ===== CONTACT ===== */
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 28rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 1.05rem;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .contact-link span { min-width: 0; overflow-wrap: anywhere; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  /* ===== REDUCED MOTION ===== */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .project-card {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">Navneet Shankar</a>
+      <div class="nav-right">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2.5v2M12 19.5v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2.5 12h2M19.5 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79Z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <h1 class="hero-name">Navneet Shankar</h1>
+        <p class="hero-title">Software Engineer | Retrieval Systems &middot; Distributed Data &middot; AI Backends</p>
+        <p class="hero-statement">I build backend and retrieval systems where data scale and query quality actually matter.</p>
+        <div class="hero-links">
+          <a href="https://github.com/navy1999" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.39-1.25.71-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.66.79.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.73 18.27.5 12 .5Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/navneets889593176/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-label">01 &mdash; About</div>
+        <h2 class="section-title">About</h2>
+        <div class="about-content">
+          <p class="lead">I build backend and retrieval systems where data scale and query quality actually matter. At Virginia Tech, I shipped a GraphRAG and query-routing system on top of 600K+ NIH/NSF award records, combining Neo4j-based graph retrieval, Pinecone semantic search, and LangGraph agentic routing to answer natural language queries over research funding data and optimize funding proposals.</p>
+          <p>I also built the full ingestion and search infrastructure behind it &mdash; Go and FastAPI services, SAVEPOINT-based PostgreSQL pipelines processing 2,500+ records per day, and sub-200ms full-text search backed by Redis caching. Before that, at Citi, I owned Spark and Kafka pipelines processing 3TB of data daily, cutting ingestion time by 30%, reducing HDFS NameNode overhead by 40%, and keeping real-time risk dashboards running at a 99.9% SLA.</p>
+          <p>I'm a May 2026 MS graduate from Virginia Tech, looking for full-time roles in backend systems, distributed data, or retrieval engineering.</p>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-label">02 &mdash; Projects</div>
+        <h2 class="section-title">Selected Work</h2>
+        <div class="projects-grid">
+
+          <article class="project-card">
+            <h3 class="project-title">Spectra-RAG</h3>
+            <ul class="project-tags">
+              <li>Go</li><li>Next.js</li><li>C++/Eigen</li><li>Neo4j</li><li>OpenRouter</li>
+            </ul>
+            <p class="project-desc">A retrieval-augmented generation platform with a custom C++/Eigen vector search core wrapped behind a Go API, paired with Neo4j for graph-based context retrieval. The Next.js frontend routes queries through OpenRouter to compare grounded responses across multiple LLMs.</p>
+            <a class="project-link" href="https://github.com/navy1999/spectra-rag" target="_blank" rel="noopener noreferrer">
+              GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">GrantScope</h3>
+            <ul class="project-tags">
+              <li>Go</li><li>FastAPI</li><li>PostgreSQL</li><li>Redis</li><li>LangGraph</li><li>Neo4j</li><li>Pinecone</li><li>Next.js</li>
+            </ul>
+            <p class="project-desc">A funding analytics platform for searching and analyzing 600K+ NIH/NSF award records, combining GraphRAG over Neo4j, Pinecone semantic search, and a LangGraph statistics agent for natural-language queries. Actively in development &mdash; private repo, but happy to walk through a live demo.</p>
+            <a class="project-link" href="#contact">
+              Request a demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">WiFi DensePose</h3>
+            <ul class="project-tags">
+              <li>PyTorch</li><li>Transformers</li><li>CUDA</li>
+            </ul>
+            <p class="project-desc">A camera-free human pose estimation system that maps WiFi CSI signals to dense UV coordinates, reaching mAP &gt; 0.65 in occluded environments. Combines CNNs and Transformers with signal preprocessing, optimized to run on embedded GPUs at under 50ms latency.</p>
+            <a class="project-link" href="https://github.com/navy1999/wifi-densepose" target="_blank" rel="noopener noreferrer">
+              GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">LLVM GPU Loop Tiling</h3>
+            <ul class="project-tags">
+              <li>C++</li><li>LLVM IR</li><li>CUDA</li>
+            </ul>
+            <p class="project-desc">Custom LLVM IR optimization passes that perform automated loop tiling on CUDA kernels, improving cache locality and memory bandwidth for a 3x speedup on memory-bound workloads. Includes a Python benchmarking suite for analyzing cache and memory-access behavior across kernels.</p>
+            <a class="project-link" href="https://github.com/navy1999/llvm-gpu-loop-tiling" target="_blank" rel="noopener noreferrer">
+              GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">ML Parallelization Framework</h3>
+            <ul class="project-tags">
+              <li>Python</li><li>PyTorch</li><li>NumPy</li>
+            </ul>
+            <p class="project-desc">A benchmarking framework measuring parallel speedup, efficiency, and overhead for PCA, KNN, Random Forest, and Neural Networks across thread counts from 1 to 64. Implements algorithm-specific parallelism &mdash; chunked KNN inference, sub-forest training, and GPU-distributed neural network training.</p>
+            <a class="project-link" href="https://github.com/navy1999/ml-parallelization-framework" target="_blank" rel="noopener noreferrer">
+              GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">RKHS-Transformer</h3>
+            <ul class="project-tags">
+              <li>Python</li><li>PyTorch</li>
+            </ul>
+            <p class="project-desc">A research implementation of Reproducing Kernel Hilbert Space (RKHS) attention, replacing softmax attention with kernel-based approximations inside a standard Transformer architecture. Benchmarks expressiveness and compute trade-offs against vanilla attention baselines.</p>
+            <a class="project-link" href="https://github.com/navy1999/rkhs-transformer" target="_blank" rel="noopener noreferrer">
+              GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-label">03 &mdash; Experience</div>
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Software Engineer</h3>
+                <div class="timeline-company">Fralin Life Sciences Institute &mdash; Virginia Tech</div>
+              </div>
+              <div class="timeline-date">Aug 2025 &ndash; Present</div>
+            </div>
+            <ul class="timeline-list">
+              <li>Built a funding analytics platform using AWS-hosted microservices with a Next.js/TypeScript frontend, Go/Gin REST APIs, and Python/FastAPI ETL pipelines to search and analyze 600K+ NIH/NSF award records from 58K+ institutions and 110K+ researchers.</li>
+              <li>Developed NIH and NSF ingestion pipelines covering 10+ years of historical award data across 200GB of storage; implemented deterministic date-window splitting for NIH API pagination limits and SAVEPOINT-based PostgreSQL upserts for fault-isolated writes at 2,500+ records/day.</li>
+              <li>Implemented full-text search using PostgreSQL indexing, parallel Go routines, and Redis caching, delivering sub-200ms search responses across awards and faculty profiles.</li>
+              <li>Built a LangChain/LangGraph Statistics Agent that routes natural language queries through an agentic graph to return computed statistics and 15+ chart types over the NIH/NSF award dataset.</li>
+              <li>Shipped RAG-based semantic search with Pinecone and GraphRAG question answering with Neo4j, using bounded retrieval context to reduce hallucinations in generated responses.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Software Engineer &mdash; Olympus (Big Data Division)</h3>
+                <div class="timeline-company">Citi, Chennai</div>
+              </div>
+              <div class="timeline-date">Sep 2022 &ndash; Jul 2024</div>
+            </div>
+            <ul class="timeline-list">
+              <li>Engineered Apache Spark data pipelines in Scala and Python processing 3+ TB daily, reducing ingestion time by 30% through pipeline and storage optimizations.</li>
+              <li>Reduced HDFS small-file sprawl in Hive-backed storage by implementing scheduled compaction workflows and partition-aware Spark write strategies, lowering per-partition file counts by 40% and reducing NameNode overhead.</li>
+              <li>Built and scaled Kafka-based stream processing services handling 3TB of data daily, powering real-time risk analytics dashboards with sub-second latency and monitoring aligned to a 99.9% SLA.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Software Engineer &mdash; Commercial Credit Cards</h3>
+                <div class="timeline-company">Citi, Chennai</div>
+              </div>
+              <div class="timeline-date">Jul 2021 &ndash; Sep 2022</div>
+            </div>
+            <ul class="timeline-list">
+              <li>Developed production REST microservices using Spring Boot, with JUnit, Cucumber, and Selenium automation contributing to 80% code coverage.</li>
+              <li>Led development of a service discovery portal using Netflix Eureka to support traffic routing and service registration across 50+ microservices.</li>
+              <li>Built a full-stack resource management platform using React.js and PostgreSQL for personnel allocation and project tracking.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-label">04 &mdash; Contact</div>
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:navneets099@vt.edu">
+            <span>navneets099@vt.edu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6.75A2.25 2.25 0 0 1 5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v10.5A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V6.75Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m3.5 6 7.6 6.1a1.5 1.5 0 0 0 1.8 0L20.5 6"/></svg>
+          </a>
+          <a class="contact-link" href="https://github.com/navy1999" target="_blank" rel="noopener noreferrer">
+            <span>github.com/navy1999</span>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.39-1.25.71-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.66.79.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.73 18.27.5 12 .5Z"/></svg>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/navneets889593176/" target="_blank" rel="noopener noreferrer">
+            <span>linkedin.com/in/navneets889593176</span>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span id="year">2026</span> Navneet Shankar
+    </div>
+  </footer>
+
+  <noscript>
+    <style>.project-card { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
+
+  <script>
+    (function () {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      var root = document.documentElement;
+      var themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+      });
+
+      var navToggle = document.getElementById('navToggle');
+      var navLinks = document.getElementById('navLinks');
+      navToggle.addEventListener('click', function () {
+        var isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var cards = document.querySelectorAll('.project-card');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        cards.forEach(function (card) { card.classList.add('visible'); });
+      } else {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        cards.forEach(function (card) { observer.observe(card); });
+      }
+    })();
+  </script>
+
+</body>
+</html>
