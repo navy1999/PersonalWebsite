@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="dark light" />
-<meta name="description" content="Navneet Shankar — Software Engineer specializing in retrieval systems, distributed data, and AI-powered backends." />
-<title>Navneet Shankar — Software Engineer</title>
+<meta name="description" content="Navneet Shankar, Software Engineer specializing in retrieval systems, distributed data, and AI-powered backends." />
+<title>Navneet Shankar | Software Engineer</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23171614'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='58' fill='%234f98a3' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,6 +145,19 @@
   }
   .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
   .theme-toggle svg { width: 18px; height: 18px; }
+  .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 0.45rem 0.9rem;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .resume-btn:hover { background: var(--accent); color: var(--bg); }
   .theme-toggle .icon-sun { display: none; }
   .theme-toggle .icon-moon { display: block; }
   html[data-theme="light"] .theme-toggle .icon-sun { display: block; }
@@ -461,6 +474,7 @@
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
+          <a class="resume-btn" href="./assets/Navneet_Application_SDE.pdf" download="Navneet_Application_SDE.pdf" target="_blank">Download Resume</a>
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2.5v2M12 19.5v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2.5 12h2M19.5 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
             <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79Z"/></svg>
@@ -489,18 +503,18 @@
 
     <section id="about" class="section">
       <div class="container">
-        <div class="section-label">01 &mdash; About</div>
+        <div class="section-label">01 / About</div>
         <h2 class="section-title">About</h2>
         <div class="about-content">
           <p class="lead">I build backend and retrieval systems where data scale and query quality actually matter. At Virginia Tech, I shipped a GraphRAG and query-routing system on top of 600K+ NIH/NSF award records, combining Neo4j-based graph retrieval, Pinecone semantic search, and LangGraph agentic routing to answer natural language queries over research funding data and optimize funding proposals.</p>
-          <p>I also built the full ingestion and search infrastructure behind it &mdash; Go and FastAPI services, SAVEPOINT-based PostgreSQL pipelines processing 2,500+ records per day, and sub-200ms full-text search backed by Redis caching. Before that, at Citi, I owned Spark and Kafka pipelines processing 3TB of data daily, cutting ingestion time by 30%, reducing HDFS NameNode overhead by 40%, and keeping real-time risk dashboards running at a 99.9% SLA.</p>
-          <p>I'm a May 2026 MS graduate from Virginia Tech, looking for full-time roles in backend systems, distributed data, or retrieval engineering.</p>
+          <p>I also built the full ingestion and search infrastructure behind it, including Go and FastAPI services, SAVEPOINT-based PostgreSQL pipelines processing 2,500+ records per day, and sub-200ms full-text search backed by Redis caching. Before that, at Citi, I owned Spark and Kafka pipelines processing 3TB of data daily, cutting ingestion time by 30%, reducing HDFS NameNode overhead by 40%, and keeping real-time risk dashboards running at a 99.9% SLA.</p>
+          <p>May 2026 MS graduate from Virginia Tech, looking for full-time roles in backend systems, distributed data, or retrieval engineering.</p>
         </div>
       </div>
     </section>
     <section id="projects" class="section">
       <div class="container">
-        <div class="section-label">02 &mdash; Projects</div>
+        <div class="section-label">02 / Projects</div>
         <h2 class="section-title">Selected Work</h2>
         <div class="projects-grid">
 
@@ -509,7 +523,7 @@
             <ul class="project-tags">
               <li>Go</li><li>Next.js</li><li>C++/Eigen</li><li>Neo4j</li><li>OpenRouter</li>
             </ul>
-            <p class="project-desc">Built a query-routing and retrieval system that makes small, resource-constrained LLMs viable over large knowledge graphs. Routes natural language queries across GraphRAG (Neo4j), semantic search, and direct LLM generation based on query type &mdash; with a PCA&rarr;LDA router (85% LOOCV accuracy), Trie-based stream interceptor for entity spelling, and SVD redundancy penalty. Measured: entity spelling 73.5%&rarr;81.4%, groundedness 87.5%.</p>
+            <p class="project-desc">Built a query-routing and retrieval system that makes small, resource-constrained LLMs viable over large knowledge graphs. Routes natural language queries across GraphRAG (Neo4j), semantic search, and direct LLM generation based on query type, using a PCA&rarr;LDA router (85% LOOCV accuracy), a Trie-based stream interceptor for entity spelling, and an SVD redundancy penalty. Measured: entity spelling 73.5%&rarr;81.4%, groundedness 87.5%.</p>
             <div class="project-links">
               <a class="project-link" href="https://github.com/navy1999/spectra-rag" target="_blank" rel="noopener noreferrer">
                 GitHub
@@ -526,7 +540,7 @@
             <ul class="project-tags">
               <li>Go</li><li>FastAPI</li><li>PostgreSQL</li><li>Redis</li><li>LangGraph</li><li>Neo4j</li><li>Pinecone</li><li>Next.js</li>
             </ul>
-            <p class="project-desc">A funding analytics platform for searching and analyzing 600K+ NIH/NSF award records, combining GraphRAG over Neo4j, Pinecone semantic search, and a LangGraph statistics agent for natural-language queries. Actively in development &mdash; private repo, but happy to walk through a live demo.</p>
+            <p class="project-desc">A funding analytics platform for searching and analyzing 600K+ NIH/NSF award records, combining GraphRAG over Neo4j, Pinecone semantic search, and a LangGraph statistics agent for natural-language queries. Currently in development in a private repository, but happy to walk through a live demo.</p>
             <a class="project-link" href="#contact">
               Request a demo
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
@@ -562,7 +576,7 @@
             <ul class="project-tags">
               <li>Python</li><li>PyTorch</li><li>NumPy</li>
             </ul>
-            <p class="project-desc">A benchmarking framework measuring parallel speedup, efficiency, and overhead for PCA, KNN, Random Forest, and Neural Networks across thread counts from 1 to 64. Implements algorithm-specific parallelism &mdash; chunked KNN inference, sub-forest training, and GPU-distributed neural network training.</p>
+            <p class="project-desc">A benchmarking framework measuring parallel speedup, efficiency, and overhead for PCA, KNN, Random Forest, and Neural Networks across thread counts from 1 to 64. Implements algorithm-specific parallelism strategies, including chunked KNN inference, sub-forest training, and GPU-distributed neural network training.</p>
             <a class="project-link" href="https://github.com/navy1999/ml-parallelization-framework" target="_blank" rel="noopener noreferrer">
               GitHub
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
@@ -587,7 +601,7 @@
 
     <section id="experience" class="section">
       <div class="container">
-        <div class="section-label">03 &mdash; Experience</div>
+        <div class="section-label">03 / Experience</div>
         <h2 class="section-title">Experience</h2>
         <div class="timeline">
 
@@ -595,7 +609,7 @@
             <div class="timeline-header">
               <div>
                 <h3 class="timeline-role">Software Engineer</h3>
-                <div class="timeline-company">Fralin Life Sciences Institute &mdash; Virginia Tech</div>
+                <div class="timeline-company">Fralin Life Sciences Institute, Virginia Tech</div>
               </div>
               <div class="timeline-date">Aug 2025 &ndash; Present</div>
             </div>
@@ -611,7 +625,7 @@
           <div class="timeline-item">
             <div class="timeline-header">
               <div>
-                <h3 class="timeline-role">Software Engineer &mdash; Olympus (Big Data Division)</h3>
+                <h3 class="timeline-role">Software Engineer, Olympus (Big Data Division)</h3>
                 <div class="timeline-company">Citi, Chennai</div>
               </div>
               <div class="timeline-date">Sep 2022 &ndash; Jul 2024</div>
@@ -626,7 +640,7 @@
           <div class="timeline-item">
             <div class="timeline-header">
               <div>
-                <h3 class="timeline-role">Software Engineer &mdash; Commercial Credit Cards</h3>
+                <h3 class="timeline-role">Software Engineer, Commercial Credit Cards</h3>
                 <div class="timeline-company">Citi, Chennai</div>
               </div>
               <div class="timeline-date">Jul 2021 &ndash; Sep 2022</div>
@@ -643,7 +657,7 @@
     </section>
     <section id="contact" class="section">
       <div class="container">
-        <div class="section-label">04 &mdash; Contact</div>
+        <div class="section-label">04 / Contact</div>
         <h2 class="section-title">Get in Touch</h2>
         <div class="contact-links">
           <a class="contact-link" href="mailto:navneets099@vt.edu">
@@ -657,6 +671,10 @@
           <a class="contact-link" href="https://www.linkedin.com/in/navneets889593176/" target="_blank" rel="noopener noreferrer">
             <span>linkedin.com/in/navneets889593176</span>
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <a class="contact-link" href="./assets/Navneet_Application_SDE.pdf" download="Navneet_Application_SDE.pdf" target="_blank">
+            <span>Download Resume (PDF)</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
           </a>
         </div>
       </div>
