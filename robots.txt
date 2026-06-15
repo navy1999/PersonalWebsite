@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://navy1999.github.io/PersonalWebsite/sitemap.xml

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "deploy": "gh-pages -d . -b gh-pages -s \"{index.html,assets/**}\""
+    "deploy": "gh-pages -d . -b gh-pages -s \"{index.html,robots.txt,sitemap.xml,assets/**}\""
   },
   "devDependencies": {
     "gh-pages": "^5.0.0"
