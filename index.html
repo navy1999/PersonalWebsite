@@ -353,6 +353,42 @@
   .project-link:hover { border-color: var(--accent); color: var(--accent); }
   .project-link svg { width: 16px; height: 16px; }
 
+  /* ===== LINK PREVIEW ===== */
+  .link-preview {
+    position: fixed;
+    z-index: 200;
+    width: 280px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+    pointer-events: none;
+  }
+  .link-preview.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .link-preview img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--bg);
+  }
+  .link-preview-label {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    overflow-wrap: anywhere;
+  }
+
   /* ===== EXPERIENCE ===== */
   .timeline {
     position: relative;
@@ -691,6 +727,11 @@
     <style>.project-card { opacity: 1 !important; transform: none !important; }</style>
   </noscript>
 
+  <div class="link-preview" id="linkPreview" aria-hidden="true">
+    <img alt="" />
+    <div class="link-preview-label"></div>
+  </div>
+
   <script>
     (function () {
       document.getElementById('year').textContent = new Date().getFullYear();
@@ -731,6 +772,41 @@
           });
         }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
         cards.forEach(function (card) { observer.observe(card); });
+      }
+
+      if (window.matchMedia('(hover: hover)').matches) {
+        var preview = document.getElementById('linkPreview');
+        var previewImg = preview.querySelector('img');
+        var previewLabel = preview.querySelector('.link-preview-label');
+        var hideTimer;
+
+        document.querySelectorAll('.project-link[target="_blank"]').forEach(function (link) {
+          var show = function () {
+            clearTimeout(hideTimer);
+            var url = link.href;
+            previewImg.src = 'https://api.microlink.io/?url=' + encodeURIComponent(url) + '&screenshot=true&meta=false&embed=screenshot.url';
+            previewLabel.textContent = new URL(url).hostname.replace(/^www\./, '');
+
+            var rect = link.getBoundingClientRect();
+            var left = Math.min(Math.max(rect.left, 8), window.innerWidth - preview.offsetWidth - 8);
+            var top = rect.top - preview.offsetHeight - 8;
+            if (top < 8) top = rect.bottom + 8;
+
+            preview.style.left = left + 'px';
+            preview.style.top = top + 'px';
+            preview.classList.add('visible');
+          };
+          var hide = function () {
+            hideTimer = setTimeout(function () {
+              preview.classList.remove('visible');
+              previewImg.removeAttribute('src');
+            }, 100);
+          };
+          link.addEventListener('mouseenter', show);
+          link.addEventListener('mouseleave', hide);
+          link.addEventListener('focus', show);
+          link.addEventListener('blur', hide);
+        });
       }
     })();
   </script>
