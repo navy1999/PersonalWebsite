@@ -521,9 +521,9 @@
           <article class="project-card">
             <h3 class="project-title">Spectra-RAG</h3>
             <ul class="project-tags">
-              <li>Go</li><li>Next.js</li><li>C++/Eigen</li><li>Neo4j</li><li>OpenRouter</li>
+              <li>Go</li><li>Next.js</li><li>C++/Eigen</li><li>JSON GraphRAG</li><li>OpenRouter</li>
             </ul>
-            <p class="project-desc">Built a query-routing and retrieval system that makes small, resource-constrained LLMs viable over large knowledge graphs. Routes natural language queries across GraphRAG (Neo4j), semantic search, and direct LLM generation based on query type, using a PCA&rarr;LDA router (85% LOOCV accuracy), a Trie-based stream interceptor for entity spelling, and an SVD redundancy penalty. Measured: entity spelling 73.5%&rarr;81.4%, groundedness 87.5%.</p>
+            <p class="project-desc">Built a query-routing and retrieval system that makes small, resource-constrained LLMs viable over large knowledge graphs. Routes natural language queries across GraphRAG (Neo4j), semantic search, and direct LLM generation based on query type, using a PCA&rarr;LDA router (97.5% LOO accuracy (permutation-confirmed, p=0.024)), a Trie-based stream interceptor for entity spelling, and an SVD redundancy penalty. Measured: entity spelling 73.5%&rarr;81.4%, groundedness 87.5%. v3 supports runtime corpus swapping &mdash; type any research topic in the sidebar and the backend fetches arXiv papers, builds a fresh knowledge graph, and hot-swaps it in-memory with no restart.</p>
             <div class="project-links">
               <a class="project-link" href="https://github.com/navy1999/spectra-rag" target="_blank" rel="noopener noreferrer">
                 GitHub
